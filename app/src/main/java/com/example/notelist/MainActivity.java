@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //add TextView to Linear Layout
+    private void clearNotesBackgrounds() {
+
+    }
+
     public void addToLaout(){
         layoutNotes.addView(
             new TextViewBuilder(this)
@@ -60,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
                     .setOnClickListenerB(new View.OnClickListener() {
                         @Override
                         public void onClick(final View noteView) {
-                            Snackbar snackbar = Snackbar.make(layoutNotes,"seriusly?",Snackbar.LENGTH_SHORT).setAction("Yep!", new View.OnClickListener() {
+                            clearNotesBackgrounds();
+                            noteView.setBackgroundColor(Color.LTGRAY);
+                            Snackbar snackbar = Snackbar
+                                    .make(layoutNotes,"seriusly?",Snackbar.LENGTH_SHORT)
+                                    .setAction("Yep!", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     layoutNotes.removeView(noteView);
